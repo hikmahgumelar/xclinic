@@ -11,15 +11,18 @@ this.state = {
 }
   componentDidMount(){
     this.panggilAPI()
-    .then(res => this.setState({ status: res.json()}))
-    .catch(err => console.log('ada yang salah state tidak ada value'));
+    // .then(res => res)
+  //  .catch(err => console.log('ada yang salah state tidak ada value'));
   }
 
   panggilAPI = async () => {
-    const hasil = await fetch('/api/list');
-    const body = await hasil.json();
-    if(hasil.status !== 200)throw Error(body.message);
-    return body;
+    fetch('/api/list')
+    .then(response => response.json())
+    .then(data => this.setState({ status: data }))
+    .catch(err => console.log('ada yang salah state tidak ada value'));
+
+    // if(hasil.status !== 200)throw Error(body.message);
+    // return body;
   };
   render() {
     return (
@@ -32,7 +35,6 @@ this.state = {
           {this.state.status.map(hasilnya => {
             return(
               <div>{hasilnya.nama}</div>
-
             )
           })
         }
