@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "react-scripts build",
-    "start": "cd ../frontend && yarn start",
+    "start": "cd frontend/ && yarn start",
     "apiserver": "node server.js",
     "dev": "concurrently --kill-others-on fail \"yarn apiserver\" \"yarn start\""
   },
